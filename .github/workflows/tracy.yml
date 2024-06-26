@@ -21,6 +21,6 @@ jobs:
         sudo apt-get install -y pkg-config libfreetype6 libfreetype-dev libtbb-dev debuginfod waylandpp-dev libdbus-c++-1-0v5 libdbus-1-dev libxkbcommon-dev libglvnd-dev meson cmake git wayland-protocols nodejs emscripten
         git clone https://github.com/wolfpld/tracy/
         cd tracy 
-        cmake -B capture/build -S capture -DCMAKE_BUILD_TYPE=Release -DEMSCRIPTEN=1 -DCMAKE_CXX_COMPILER=em++ -DCMAKE_C_COMPILER=emcc
-        cmake --build capture/build --config Release
+        emcmake -B capture/build -S capture -DCMAKE_BUILD_TYPE=Release -DEMSCRIPTEN=1 -DCMAKE_CXX_COMPILER=em++ -DCMAKE_C_COMPILER=emcc
+        emcmake --build capture/build --config Release
 
