@@ -1,0 +1,27 @@
+name: tracy
+
+on: [push]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ ubuntu-22.04]
+
+    name: Build & test on ${{ matrix.os }} 
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Build Tracy
+      run: |
+        sudo apt-get install -y pkg-config libfreetype6 libfreetype-dev libtbb-dev debuginfod waylandpp-dev libdbus-c++-1-0v5 libdbus-1-dev libxkbcommon-dev libglvnd-dev meson cmake git wayland-protocols nodejs emscripten
+        git clone https://github.com/wolfpld/tracy/
+        cd tracy 
+        cmake -B capture/build -S capture -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=em++
+        cmake --build capture/build --parallel --config Release
+
+
