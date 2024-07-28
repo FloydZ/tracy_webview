@@ -1,0 +1,7 @@
+EMSCRIPTEN_ROOT = '/nix/store/rlipc21gq1z081z5dac6akg1xvnylbx9-emscripten-3.1.51/share/emscripten'
+LLVM_ROOT = '/nix/store/ycym0cjwgz33acb5lkifsbyfwv8yhj38-emscripten-llvm-3.1.51/bin'
+NODE_JS = '/nix/store/9cwyl546mzksfbvk6gdpjddc7z7m6ixv-nodejs-20.15.1/bin/node'
+JS_ENGINES = [NODE_JS]
+CLOSURE_COMPILER = ['/nix/store/60knahygv4v4zrwvhfad28axwlc71bd0-closure-compiler-20231112/bin/closure-compiler']
+JAVA = '/nix/store/4h8j6il1w6kv0py8965hfv7h41gsc0pj-openjdk-21.0.3+9/bin/java'
+BINARYEN_ROOT = '/nix/store/8v7j0phl2qflx4jaghgdqzfqb8n2qngn-binaryen-116'

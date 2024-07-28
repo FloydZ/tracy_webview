@@ -23,6 +23,7 @@ jobs:
         cd tracy/profiler
         mkdir build
         cd build
+        cat /usr/share/emscripten/.emscripten
         # export EM_CONFIG=$HOME/.emscripten
         # export FROZEN_CACHE=false
         unset FROZEN_CACHE
