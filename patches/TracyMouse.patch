@@ -1,0 +1,60 @@
+diff --git a/profiler/src/profiler/TracyMouse.cpp b/profiler/src/profiler/TracyMouse.cpp
+index 3053c2dd..13b88d9b 100644
+--- a/profiler/src/profiler/TracyMouse.cpp
++++ b/profiler/src/profiler/TracyMouse.cpp
+@@ -1,4 +1,4 @@
+-#include <cmath>
++//#include <cmath>
+ 
+ #include "TracyMouse.hpp"
+ 
+@@ -20,6 +20,12 @@ struct Mouse
+     bool mousePotentialClickRelease[MouseButtons];
+ };
+ 
++
++template<typename T>
++inline T c_abs(const T &n) {
++	return (n > 0 ? n : -n);
++}
++
+ static Mouse s_mouse = {};
+ 
+ void MouseFrame()
+@@ -36,7 +42,7 @@ void MouseFrame()
+         {
+             if( s_mouse.mouseClicked[i] || s_mouse.mousePotentialClickRelease[i] )
+             {
+-                if( std::abs( s_mouse.mouseDragDelta[i].x ) < MouseDragThreshold && std::abs( s_mouse.mouseDragDelta[i].y ) < MouseDragThreshold )
++                if( c_abs( s_mouse.mouseDragDelta[i].x ) < MouseDragThreshold && c_abs( s_mouse.mouseDragDelta[i].y ) < MouseDragThreshold )
+                 {
+                     s_mouse.mouseDragging[i] = false;
+                 }
+diff --git a/profiler/src/profiler/TracySourceView.cpp b/profiler/src/profiler/TracySourceView.cpp
+index 5f3bc318..585fa8a3 100644
+--- a/profiler/src/profiler/TracySourceView.cpp
++++ b/profiler/src/profiler/TracySourceView.cpp
+@@ -1,7 +1,8 @@
++#include <stdio.h>
++#include <stdarg.h>
+ #include <ctype.h>
+ #include <inttypes.h>
+-#include <sstream>
+-#include <stdio.h>
++// #include <sstream>
+ 
+ #include <capstone.h>
+ 
+@@ -1062,9 +1063,9 @@ void SourceView::Render( Worker& worker, View& view )
+         ImGui::PushFont( m_bigFont );
+         if( ClipboardButton() )
+         {
+-            std::ostringstream stream;
+-            stream.write( m_source.data(), m_source.data_size() );
+-            ImGui::SetClipboardText( stream.str().c_str() );
++            // std::ostringstream stream;
++            // stream.write( m_source.data(), m_source.data_size() );
++            // ImGui::SetClipboardText( stream.str().c_str() );
+         }
+         ImGui::PopFont();
+         ImGui::SameLine();
