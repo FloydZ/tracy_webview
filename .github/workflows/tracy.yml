@@ -27,6 +27,6 @@ jobs:
         mkdir build
         cd build
         emcmake cmake .. -DNO_ISA_EXTENSIONS:BOOL=ON -DNO_PARALLEL_STL:BOOL=ON -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON
+        sudo emmake make
         sudo cat /root/.emscripten_cache/sysroot/include/compat/xlocale.h
-        # sudo emmake make
 
