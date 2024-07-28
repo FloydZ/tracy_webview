@@ -1,0 +1,32 @@
+diff --git a/profiler/src/profiler/TracyMouse.cpp b/profiler/src/profiler/TracyMouse.cpp
+index 3053c2dd..13b88d9b 100644
+--- a/profiler/src/profiler/TracyMouse.cpp
++++ b/profiler/src/profiler/TracyMouse.cpp
+@@ -1,4 +1,4 @@
+-#include <cmath>
++//#include <cmath>
+ 
+ #include "TracyMouse.hpp"
+ 
+@@ -20,6 +20,12 @@ struct Mouse
+     bool mousePotentialClickRelease[MouseButtons];
+ };
+ 
++
++template<typename T>
++inline T c_abs(const T &n) {
++	return (n > 0 ? n : -n);
++}
++
+ static Mouse s_mouse = {};
+ 
+ void MouseFrame()
+@@ -36,7 +42,7 @@ void MouseFrame()
+         {
+             if( s_mouse.mouseClicked[i] || s_mouse.mousePotentialClickRelease[i] )
+             {
+-                if( std::abs( s_mouse.mouseDragDelta[i].x ) < MouseDragThreshold && std::abs( s_mouse.mouseDragDelta[i].y ) < MouseDragThreshold )
++                if( c_abs( s_mouse.mouseDragDelta[i].x ) < MouseDragThreshold && c_abs( s_mouse.mouseDragDelta[i].y ) < MouseDragThreshold )
+                 {
+                     s_mouse.mouseDragging[i] = false;
+                 }

@@ -21,7 +21,9 @@ jobs:
         sudo apt-get install -y pkg-config libfreetype6 libfreetype-dev libtbb-dev debuginfod waylandpp-dev libdbus-c++-1-0v5 libdbus-1-dev libxkbcommon-dev libglvnd-dev meson cmake git wayland-protocols nodejs emscripten gcc-multilib clang-15
         sudo cp .emscripten /usr/share/emscripten/.emscripten
         git clone https://github.com/wolfpld/tracy/ 
-        cd tracy/profiler
+        cd tracy 
+        git apply ../patches/TracyMouse.patch
+        cd profiler
         mkdir build
         cd build
         unset FROZEN_CACHE
