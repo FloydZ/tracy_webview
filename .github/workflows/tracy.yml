@@ -24,7 +24,8 @@ jobs:
         mkdir build
         cd build
         # export EM_CONFIG=$HOME/.emscripten
-        export FROZEN_CACHE=false
+        # export FROZEN_CACHE=false
+        unset FROZEN_CACHE
         emcmake cmake .. -DNO_ISA_EXTENSIONS:BOOL=ON -DNO_PARALLEL_STL:BOOL=ON -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON
         sudo emmake make
 
