@@ -23,6 +23,7 @@ jobs:
         cd tracy/profiler
         mkdir build
         cd build
+        export EM_CONFIG=$HOME/.emscripten
         emcmake cmake .. -DNO_ISA_EXTENSIONS:BOOL=ON -DNO_PARALLEL_STL:BOOL=ON -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON
         emmake make
 
