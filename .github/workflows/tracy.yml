@@ -37,3 +37,15 @@ jobs:
         emcmake cmake .. -DNO_ISA_EXTENSIONS:BOOL=ON -DNO_PARALLEL_STL:BOOL=ON -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON
         emmake make
         "
+    - name: Store Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: wasm stuff
+        path: |
+          tracy-profiler.data
+          tracy-profiler.js
+          tracy-profiler.wasm
+          tracy-profiler.worker.js
+          index.html
+          httpd.py
+          embed.tracy
