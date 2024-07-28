@@ -17,12 +17,8 @@ jobs:
         submodules: recursive
     - uses: cachix/install-nix-action@v27
       with:
-        nix_path: nixpkgs=channel:nixos-4.05
+        nix_path: nixpkgs=channel:nixos-24.05
     - uses: DeterminateSystems/magic-nix-cache-action@v2
-
-    - name: setup nixos 
-      run: | 
-
 
 #    - name: Build Tracy
 #      run: |
@@ -31,7 +27,7 @@ jobs:
 
     - name: Build Tracy
       run: |
-        nix-shell -p capstone dbus freetype glfw hicolor-icon-theme pkg-config tbb clang libxkbcommon wayland wayland-protocols gcc libffi bintools emscripten git 
+        nix-shell -p capstone dbus freetype glfw hicolor-icon-theme pkg-config tbb clang libxkbcommon wayland wayland-protocols gcc libffi bintools emscripten git pkg-config
         git clone https://github.com/wolfpld/tracy/ 
         cd tracy 
         git apply ../patches/TracyMouse.patch
