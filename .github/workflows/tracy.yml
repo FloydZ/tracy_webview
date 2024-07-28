@@ -18,14 +18,12 @@ jobs:
 
     - name: Build Tracy
       run: |
+        sudo cp .emscripten /usr/share/emscripten/.emscripten
         sudo apt-get install -y pkg-config libfreetype6 libfreetype-dev libtbb-dev debuginfod waylandpp-dev libdbus-c++-1-0v5 libdbus-1-dev libxkbcommon-dev libglvnd-dev meson cmake git wayland-protocols nodejs emscripten gcc-multilib
         git clone https://github.com/wolfpld/tracy/ 
         cd tracy/profiler
         mkdir build
         cd build
-        cat /usr/share/emscripten/.emscripten
-        # export EM_CONFIG=$HOME/.emscripten
-        # export FROZEN_CACHE=false
         unset FROZEN_CACHE
         emcmake cmake .. -DNO_ISA_EXTENSIONS:BOOL=ON -DNO_PARALLEL_STL:BOOL=ON -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON
         sudo emmake make
