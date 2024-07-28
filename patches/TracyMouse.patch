@@ -31,7 +31,7 @@ index 3053c2dd..13b88d9b 100644
                      s_mouse.mouseDragging[i] = false;
                  }
 diff --git a/profiler/src/profiler/TracySourceView.cpp b/profiler/src/profiler/TracySourceView.cpp
-index 5f3bc318..46778be4 100644
+index 5f3bc318..585fa8a3 100644
 --- a/profiler/src/profiler/TracySourceView.cpp
 +++ b/profiler/src/profiler/TracySourceView.cpp
 @@ -1,7 +1,8 @@
@@ -39,8 +39,22 @@ index 5f3bc318..46778be4 100644
 +#include <stdarg.h>
  #include <ctype.h>
  #include <inttypes.h>
- #include <sstream>
+-#include <sstream>
 -#include <stdio.h>
++// #include <sstream>
  
  #include <capstone.h>
  
+@@ -1062,9 +1063,9 @@ void SourceView::Render( Worker& worker, View& view )
+         ImGui::PushFont( m_bigFont );
+         if( ClipboardButton() )
+         {
+-            std::ostringstream stream;
+-            stream.write( m_source.data(), m_source.data_size() );
+-            ImGui::SetClipboardText( stream.str().c_str() );
++            // std::ostringstream stream;
++            // stream.write( m_source.data(), m_source.data_size() );
++            // ImGui::SetClipboardText( stream.str().c_str() );
+         }
+         ImGui::PopFont();
+         ImGui::SameLine();
