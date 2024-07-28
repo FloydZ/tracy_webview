@@ -26,7 +26,6 @@ jobs:
         cd profiler
         mkdir build
         cd build
-        unset FROZEN_CACHE
         emcmake cmake .. -DNO_ISA_EXTENSIONS:BOOL=ON -DNO_PARALLEL_STL:BOOL=ON -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON
         sudo emmake make
 
