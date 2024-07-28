@@ -23,6 +23,6 @@ jobs:
         cd tracy/profiler
         mkdir build
         cd build
-        emcmake cmake ..
+        emcmake cmake .. -DNO_ISA_EXTENSIONS=ON -DNO_PARALLEL_STL=ON
         emmake make
 
