@@ -42,10 +42,10 @@ jobs:
       with:
         name: wasm stuff
         path: |
-          tracy-profiler.data
-          tracy-profiler.js
-          tracy-profiler.wasm
-          tracy-profiler.worker.js
-          index.html
-          httpd.py
-          embed.tracy
+          tracy/profiler/build/tracy-profiler.data
+          tracy/profiler/build/tracy-profiler.js
+          tracy/profiler/build/tracy-profiler.wasm
+          tracy/profiler/build/tracy-profiler.worker.js
+          tracy/profiler/build/index.html
+          tracy/profiler/build/httpd.py
+          tracy/profiler/build/embed.tracy
