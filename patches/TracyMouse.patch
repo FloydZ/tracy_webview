@@ -31,14 +31,16 @@ index 3053c2dd..13b88d9b 100644
                      s_mouse.mouseDragging[i] = false;
                  }
 diff --git a/profiler/src/profiler/TracySourceView.cpp b/profiler/src/profiler/TracySourceView.cpp
-index 5f3bc318..d64127de 100644
+index 5f3bc318..46778be4 100644
 --- a/profiler/src/profiler/TracySourceView.cpp
 +++ b/profiler/src/profiler/TracySourceView.cpp
-@@ -2,6 +2,7 @@
+@@ -1,7 +1,8 @@
++#include <stdio.h>
++#include <stdarg.h>
+ #include <ctype.h>
  #include <inttypes.h>
  #include <sstream>
- #include <stdio.h>
-+#include <stdarg.h>
+-#include <stdio.h>
  
  #include <capstone.h>
  
