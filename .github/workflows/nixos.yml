@@ -1,0 +1,51 @@
+name: tracy
+
+on: [push]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ ubuntu-24.04]
+
+    name: Build & test on ${{ matrix.os }} 
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
+    - uses: cachix/install-nix-action@v27
+      with:
+        nix_path: nixpkgs=channel:nixos-24.05
+    - uses: DeterminateSystems/magic-nix-cache-action@v2
+
+#    - name: Build Tracy
+#      run: |
+#        sudo apt-get install -y pkg-config libfreetype6 libfreetype-dev libtbb-dev debuginfod waylandpp-dev libdbus-c++-1-0v5 libdbus-1-dev libxkbcommon-dev libglvnd-dev meson cmake git wayland-protocols nodejs emscripten gcc-multilib clang-18
+#        sudo cp .emscripten /usr/share/emscripten/.emscripten
+
+    - name: Build Tracy
+      run: |
+        nix-shell -p capstone dbus freetype glfw hicolor-icon-theme pkg-config tbb clang libxkbcommon wayland wayland-protocols gcc libffi bintools emscripten git --command "
+        git clone https://github.com/wolfpld/tracy/ 
+        cd tracy 
+        # git apply ../patches/TracyMouse.patch
+        cd profiler
+        mkdir build
+        cd build
+        emcmake cmake .. -DNO_ISA_EXTENSIONS:BOOL=ON -DNO_PARALLEL_STL:BOOL=ON -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON
+        emmake make
+        "
+    - name: Store Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: wasm stuff
+        path: |
+          tracy/profiler/build/tracy-profiler.data
+          tracy/profiler/build/tracy-profiler.js
+          tracy/profiler/build/tracy-profiler.wasm
+          tracy/profiler/build/tracy-profiler.worker.js
+          tracy/profiler/build/index.html
+          tracy/profiler/build/httpd.py
+          tracy/profiler/build/embed.tracy
