@@ -28,7 +28,7 @@ jobs:
         cmake --build profiler/build --parallel
     - name: Compress artifacts
       run: |
-        gzip -9 tracy/profiler/build/tracy-profiler.js tracy/profiler/build/tracy-profiler.wasm
+        gzip -k -9 tracy/profiler/build/tracy-profiler.js tracy/profiler/build/tracy-profiler.wasm
     - name: Find Artifacts
       id: find_artifacts
       run: |
