@@ -28,9 +28,25 @@ index 679e0ec0..defa6113 100644
          {
              ImGui::Separator();
 diff --git a/profiler/wasm/index.html b/profiler/wasm/index.html
-index 88a0712d..8a08ae4d 100644
+index 88a0712d..dbc9383c 100644
 --- a/profiler/wasm/index.html
 +++ b/profiler/wasm/index.html
+@@ -73,6 +73,7 @@
+     </style>
+   </head>
+   <body>
++    <script src="enable-threads.js"></script>
+     <div id="preload">
+       <div class="spinner" id='spinner'></div>
+       <div class="emscripten" id="status">Downloading...</div>
+@@ -82,7 +83,6 @@
+       <progress value="0" max="100" id="progress" hidden=1></progress>
+       <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
+     </div>
+-
+     <script type='text/javascript'>
+       var statusElement = document.getElementById('status');
+       var progressElement = document.getElementById('progress');
 @@ -138,7 +138,7 @@
            Module.setStatus(left ? 'Preparing... (' + (this.totalDependencies-left) + '/' + this.totalDependencies + ')' : 'All downloads complete.');
          }

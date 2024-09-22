@@ -40,6 +40,7 @@ jobs:
         cp tracy/profiler/build/tracy-profiler.js.gz bin
         cp tracy/profiler/build/tracy-profiler.wasm bin
         cp tracy/profiler/build/tracy-profiler.wasm.gz bin
+        cp enable-threads.js bin
         tar -cvf artifacts.tar -C bin .
 #    - uses: actions/upload-artifact@v4
 #      with:
