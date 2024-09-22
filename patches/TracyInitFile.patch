@@ -1,0 +1,13 @@
+diff --git a/profiler/src/main.cpp b/profiler/src/main.cpp
+index 679e0ec0..06c868e4 100644
+--- a/profiler/src/main.cpp
++++ b/profiler/src/main.cpp
+@@ -281,7 +281,7 @@ int main( int argc, char** argv )
+ 
+     std::unique_ptr<tracy::FileRead> initFileOpen;
+ #ifdef __EMSCRIPTEN__
+-    initFileOpen = std::unique_ptr<tracy::FileRead>( tracy::FileRead::Open( "embed.tracy" ) );
++    // initFileOpen = std::unique_ptr<tracy::FileRead>( tracy::FileRead::Open( "embed.tracy" ) );
+ #endif
+     if( argc == 2 )
+     {

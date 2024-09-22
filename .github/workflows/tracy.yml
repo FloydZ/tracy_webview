@@ -24,6 +24,7 @@ jobs:
       run: |
         git clone https://github.com/wolfpld/tracy/ 
         cd tracy 
+        git apply ../patches/TracyInitFile.patch
         cmake -G Ninja -B profiler/build -S profiler -DCMAKE_BUILD_TYPE=MinSizeRel -DGIT_REV=${{ github.sha }} -DCMAKE_TOOLCHAIN_FILE=${{env.EMSDK}}/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake
         cmake --build profiler/build --parallel
     - name: Compress artifacts
